@@ -1,0 +1,38 @@
+# Dependencias de Composer
+/vendor/
+
+# Archivos de configuración del entorno (contienen contraseñas y claves)
+.env
+.env.local
+.env.*.local
+
+# Logs y Caché
+*.log
+/storage/*.key
+/storage/framework/cache/data/*
+/storage/framework/sessions/*
+/storage/framework/views/*
+/storage/logs/*
+
+# Ejecutables y dependencias de frontend (si usas npm/yarn)
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Archivos del Sistema Operativo y Editores
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.sublime-project
+*.sublime-workspace
+
+# Reportes de Testing/Cobertura
+/tests/_output/
+/tests/_support/_generated/
+.phpunit.result.cache
+/build/
+
+# Archivos temporales
+/tmp/
