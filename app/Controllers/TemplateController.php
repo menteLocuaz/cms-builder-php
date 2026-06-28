@@ -19,6 +19,7 @@ class TemplateController
             'title'         => 'Instalación',
             'useSweetAlert' => true,
             'useFormsJs'    => true,
+            'useNProgress'  => true,
         ]);
     }
 }

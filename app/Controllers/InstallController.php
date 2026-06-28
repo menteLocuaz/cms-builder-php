@@ -10,6 +10,7 @@ use Arancamon\CmsBuilderPhp\Database\Migrations\CreateColumnsTable;
 use Arancamon\CmsBuilderPhp\Database\Migrations\CreateModulesTable;
 use Arancamon\CmsBuilderPhp\Database\Migrations\CreatePagestable;
 use Arancamon\CmsBuilderPhp\Database\Migrations\CreateSettingsTable;
+use Arancamon\CmsBuilderPhp\Services\CurlController;
 use PDO;
 use PDOException;
 
@@ -66,32 +67,21 @@ class InstallController
 
     private function insertAdmin(): void
     {
-        $stmt = $this->db->prepare('INSERT INTO admins (
-                email_admin,
-                password_admin,
-                title_admin,
-                symbol_admin,
-                font_admin,
-                color_admin,
-                back_admin
-            ) VALUES (
-                :email,
-                :password,
-                :title,
-                :symbol,
-                :font,
-                :color,
-                :back
-            )');
+        $url = "admins?register=true&suffix=admin";
+        $method = "POST";
+        $fields = [
+            "email_admin" => trim($_POST["email_admin"]),
+            "password_admin" => trim($_POST["password_admin"]),
+            "rol_admin" => "superadmin",
+            "permissions_admin" => '{"todo":"on"}',
+            "title_admin" => trim($_POST["title_admin"]),
+            "symbol_admin" => trim($_POST["symbol_admin"]),
+            "font_admin" => trim($_POST["font_admin"]),
+            "color_admin" => trim($_POST["color_admin"]),
+            "back_admin" => trim($_POST["back_admin"]),
+            "date_created_admin" => date("Y-m-d"),
+        ];
 
-        $stmt->execute([
-            ':email' => $_POST['email_admin'],
-            ':password' => password_hash($_POST['password_admin'], PASSWORD_BCRYPT),
-            ':title' => $_POST['title_admin'],
-            ':symbol' => $_POST['symbol_admin'],
-            ':font' => $_POST['font_admin'],
-            ':color' => $_POST['color_admin'],
-            ':back' => $_POST['back_admin'],
-        ]);
+        CurlController::request($url, $method, $fields);
     }
 }

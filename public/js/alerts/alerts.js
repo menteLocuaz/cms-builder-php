@@ -1,113 +1,43 @@
-function fncFormatInputs() {
-  if (window.history.replaceState) {
-    window.history.replaceState(null, null, window.location.href);
-  }
-}
+const UI = {
+  async alert(type, text, url = "") {
+    switch (type) {
 
-function fncSweetAlert(type, text, url) {
-  switch (type) {
-    case "success":
-      if (url == "") {
-        Swal.fire({
-          icon: "success",
-          title: "Correcto",
-          text: text,
+      case "success":
+      case "error": {
+        const result = await Swal.fire({
+          icon: type,
+          title: type === "success" ? "Correcto" : "Error",
+          text,
         });
-      } else {
-        Swal.fire({
-          icon: "success",
-          title: "Correcto",
-          text: text,
-        }).then((result) => {
-          if (result.value) {
-            window.location.href = url;
-          }
-        });
+        if (url && result.isConfirmed) location.href = url;
+        break;
       }
-      break;
 
-    case "error":
-      if (url == "") {
-        Swal.fire({
-          icon: "error",
-          title: "Error",
-          text: text,
-        });
-      } else {
-        Swal.fire({
-          icon: "error",
-          title: "Error",
-          text: text,
-        }).then((result) => {
-          if (result.value) {
-            window.location.href = url;
-          }
-        });
-      }
-      break;
-
-    case "loading":
-      Swal.fire({
-        allowOutsideClick: false,
-        icon: "info",
-        text: text,
-      });
-      Swal.showLoading();
-      break;
-
-    case "confirm":
-      return new Promise((resolve) => {
-        Swal.fire({
-          text: text,
+      case "confirm": {
+        const result = await Swal.fire({
           icon: "warning",
+          text,
           showCancelButton: true,
+          confirmButtonText: "Sí, continuar",
+          cancelButtonText: "Cancelar",
           confirmButtonColor: "#3085d6",
           cancelButtonColor: "#d33",
-          confirmButtonText: "¡Si, continuar!",
-          cancelButtonText: "No",
-        }).then((result) => {
-          resolve(result.value);
         });
-      });
-      break;
+        return result.isConfirmed;
+      }
+    }
+  },
 
-    case "close":
-      Swal.close();
-      break;
-  }
-}
+  loading(text) {
+    Swal.fire({
+      icon: "info",
+      text,
+      allowOutsideClick: false,
+      didOpen: () => Swal.showLoading(),
+    });
+  },
 
-function fncToastr(type, text) {
-  var Toast = Swal.mixin({
-    toast: true,
-    position: "top-end",
-    showConfirmButton: false,
-    timer: 4000,
-    timerProgressBar: true,
-    didOpen: (toast) => {
-      toast.addEventListener("mouseenter", Swal.stopTimer);
-      toast.addEventListener("mouseleave", Swal.resumeTimer);
-    },
-  });
-
-  Toast.fire({
-    icon: type,
-    title: text,
-  });
-}
-
-function fncMatPreloader(type) {
-  if (typeof Pace === "undefined") return;
-
-  if (type == "on") {
-    Pace.restart();
-  }
-
-  if (type == "off") {
-    Pace.stop();
-  }
-}
-
-function alertClick(text) {
-  fncSweetAlert("loading", text, "");
-}
+  close() {
+    Swal.close();
+  },
+};
