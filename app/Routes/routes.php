@@ -10,5 +10,4 @@ foreach ($routesArray as $key => $value) {
 }
 
 $index = new TemplateController();
-
 $index->Index();
