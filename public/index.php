@@ -14,6 +14,11 @@ define('BASE_URL', $baseUrl);
 define('ASSETS', BASE_URL);
 define('APP', __DIR__ . '/../app');
 
+function database_path(string $path = ''): string
+{
+    return __DIR__ . '/../database' . ($path ? '/' . $path : $path);
+}
+
 include APP . '/Routes/routes.php';
 
 ini_set('display_errors', 1);
