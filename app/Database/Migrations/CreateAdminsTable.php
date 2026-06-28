@@ -21,7 +21,7 @@ class CreateAdminsTable
                 token_exp_admin TIMESTAMP,
                 status_admin SMALLINT DEFAULT 1,
                 title_admin VARCHAR(150),
-                symbol_admin VARCHAR(10),
+                symbol_admin VARCHAR(50),
                 font_admin TEXT,
                 color_admin VARCHAR(20),
                 back_admin TEXT,

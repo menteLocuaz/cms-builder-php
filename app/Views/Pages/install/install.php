@@ -47,8 +47,8 @@ document.querySelector('.needs-validation').addEventListener('submit', function 
   const form = this;
   if (!form.checkValidity()) return;
 
-  fncMatPreloader('on');
-  fncSweetAlert('loading', 'Instalando...', '');
+  fncMatPreloader(true);
+  UI.loading('Instalando...');
 
   const formData = new FormData(form);
 
@@ -58,19 +58,19 @@ document.querySelector('.needs-validation').addEventListener('submit', function 
   })
     .then(r => r.json())
     .then(data => {
-      fncMatPreloader('off');
-      Swal.close();
+      fncMatPreloader(false);
+      UI.close();
 
       if (data.success) {
-        fncSweetAlert('success', data.message, '<?= BASE_URL ?>admin/');
+        UI.alert('success', data.message, '<?= BASE_URL ?>/admin/');
       } else {
-        fncSweetAlert('error', data.message, '');
+        UI.alert('error', data.message);
       }
     })
     .catch(() => {
-      fncMatPreloader('off');
-      Swal.close();
-      fncSweetAlert('error', 'Error de conexión con el servidor.', '');
+      fncMatPreloader(false);
+      UI.close();
+      UI.alert('error', 'Error de conexión con el servidor.');
     });
 });
 </script>

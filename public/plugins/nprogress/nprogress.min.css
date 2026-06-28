@@ -1,0 +1,25 @@
+/**
+ * Minified by jsDelivr using clean-css v5.3.3.
+ * Original file: /npm/nprogress@0.2.0/nprogress.css
+ *
+ * Do NOT use SRI with dynamically generated files! More information: https://www.jsdelivr.com/using-sri-with-dynamic-files
+ */
+#nprogress{pointer-events:none}#nprogress .bar{background:#29d;position:fixed;z-index:1031;top:0;left:0;width:100%;height:2px}#nprogress .peg{display:block;position:absolute;right:0;width:100px;height:100%;box-shadow:0 0 10px #29d,0 0 5px #29d;opacity:1;-webkit-transform:rotate(3deg) translate(0,-4px);-ms-transform:rotate(3deg) translate(0,-4px);transform:rotate(3deg) translate(0,-4px)}#nprogress .spinner{display:block;position:fixed;z-index:1031;top:15px;right:15px}#nprogress .spinner-icon{width:18px;height:18px;box-sizing:border-box;border:solid 2px transparent;border-top-color:#29d;border-left-color:#29d;border-radius:50%;-webkit-animation:nprogress-spinner .4s linear infinite;animation:nprogress-spinner .4s linear infinite}.nprogress-custom-parent{overflow:hidden;position:relative}.nprogress-custom-parent #nprogress .bar,.nprogress-custom-parent #nprogress .spinner{position:absolute}@-webkit-keyframes nprogress-spinner{0%{-webkit-transform:rotate(0)}100%{-webkit-transform:rotate(360deg)}}@keyframes nprogress-spinner{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}
+
+/* NProgress Minimal Flash */
+#nprogress.minimal-flash .bar{background:#29d;height:3px}#nprogress.minimal-flash .peg{box-shadow:none}#nprogress.minimal-flash .spinner-icon{border-top-color:rgba(41,130,220,.8);border-left-color:rgba(41,130,220,.8)}
+
+/* NProgress Loading Bar */
+#nprogress.loading-bar .bar{background:#29d;height:4px;box-shadow:0 0 10px rgba(41,130,220,.5)}#nprogress.loading-bar .spinner{display:none}
+
+/* NProgress Bounce */
+#nprogress.bounce .bar{background:#29d;height:6px;border-radius:0 0 6px 6px;animation:bounce-bar 1s infinite ease-in-out}#nprogress.bounce .peg{display:none}#nprogress.bounce .spinner{display:none}@keyframes bounce-bar{0%,100%{transform:translateX(0)}50%{transform:translateX(-20px)}}
+
+/* NProgress Center Circle */
+#nprogress.center-circle .bar{display:none}#nprogress.center-circle .spinner{top:50%;left:50%;right:auto;transform:translate(-50%,-50%)}#nprogress.center-circle .spinner-icon{width:40px;height:40px;border-width:3px;border-top-color:#29d;border-left-color:rgba(41,130,220,.3)}
+
+/* NProgress Big Counter */
+#nprogress.big-counter .bar{display:none}#nprogress.big-counter .spinner{display:none}#nprogress.big-counter::after{content:attr(data-progress);position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);font-size:72px;font-weight:300;color:#29d;opacity:0;transition:opacity .3s}#nprogress.big-counter.busy::after{opacity:1}
+
+/* NProgress Center Simple */
+#nprogress.center-simple .bar{display:none}#nprogress.center-simple .spinner{top:50%;left:50%;right:auto;transform:translate(-50%,-50%);background:rgba(41,130,220,.1);border-radius:50%;width:50px;height:50px;animation:center-simple-pulse 1.5s infinite ease-in-out}#nprogress.center-simple .spinner-icon{border-width:4px;border-top-color:#29d;border-left-color:rgba(41,130,220,.2);width:50px;height:50px;margin:0}@keyframes center-simple-pulse{0%,100%{transform:translate(-50%,-50%) scale(1);opacity:.8}50%{transform:translate(-50%,-50%) scale(1.1);opacity:1}}

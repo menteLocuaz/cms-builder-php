@@ -29,3 +29,6 @@
 <script src="<?= ASSETS ?>/js/app.js"></script>
 
 <script src="<?= ASSETS ?>/js/alerts/alerts.js"></script>
+<script src="<?= ASSETS ?>/js/alerts/toast.js"></script>
+<script src="<?= ASSETS ?>/js/alerts/preloader.js"></script>
+<script src="<?= ASSETS ?>/js/alerts/history.js"></script>
