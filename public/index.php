@@ -1,12 +1,15 @@
 <?php
 
+ob_start();
+session_start();
+
 require_once __DIR__ . '/../vendor/autoload.php';
 
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/..');
 $dotenv->load();
 
 $baseUrl = sprintf(
-    '%s://%s',
+    '%s://%s/',
     (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http',
     $_SERVER['HTTP_HOST']
 );

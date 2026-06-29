@@ -8,7 +8,7 @@ Plain PHP CMS (early stage, install wizard only). No framework — minimal custo
 
 - `public/index.php` — loads dotenv, defines `BASE_URL`, `ASSETS`, `APP` constants, includes routes.
 - `public/.htaccess` — Apache rewrite all non-file requests → `index.php`.
-- `app/Routes/routes.php` — trivial router; currently always renders `TemplateController::Index()` (install page).
+- `app/Routes/routes.php` — session-based router. If `$_SESSION['admin']` is set, routes to `DashboardController`; otherwise serves `TemplateController::Index()` (install/login pages).
 - `app/Core/View.php` — `View::render($view, $data)` uses `extract()` + `require`; `$data` keys become template variables.
 
 ## Key commands
@@ -39,7 +39,9 @@ CSS source is `public/css/input.css` (currently just `@import "tailwindcss"`). O
 
 ## Empty directories (do not expect content)
 
-`app/Models/`, `app/Services/`, `app/Ajax/`, `bootstrap/`, `config/`, `storage/`, `tests/`, `docs/` — all empty placeholders.
+`app/Ajax/`, `bootstrap/`, `config/`, `storage/`, `tests/`, `docs/` — all empty placeholders.
+
+`app/Models/` contains Repositories (`AdminRepository`, `ColumnRepository`, `ModuleRepository`, `PageRepository`, `Repository.php`). `app/Services/` contains service classes (`AdminService`, `ColumnService`, `ModuleService`, `PageService`, `CurlController.php`).
 
 ## Testing
 

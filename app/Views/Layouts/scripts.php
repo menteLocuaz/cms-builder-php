@@ -2,6 +2,8 @@
 
 <script defer src="<?= ASSETS ?>/plugins/alpinejs/alpine.min.js"></script>
 
+<script src="<?= ASSETS ?>/plugins/sweetalert2/sweetalert2.min.js"></script>
+
 <?php if (!empty($useChartJs)): ?>
 <script src="<?= ASSETS ?>/plugins/chart.js/chart.umd.min.js"></script>
 <?php endif; ?>
@@ -16,10 +18,6 @@
 
 <?php if (!empty($useToastify)): ?>
 <script src="<?= ASSETS ?>/plugins/toastify-js/toastify.min.js"></script>
-<?php endif; ?>
-
-<?php if (!empty($useSweetAlert)): ?>
-<script src="<?= ASSETS ?>/plugins/sweetalert2/sweetalert2.min.js"></script>
 <?php endif; ?>
 
 <?php if (!empty($useFormsJs)): ?>
