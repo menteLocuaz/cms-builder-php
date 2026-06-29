@@ -113,7 +113,7 @@ document.querySelector('form').addEventListener('submit', function(e) {
         UI.close();
 
         if (data.success) {
-            UI.alert('success', data.message, '<?= BASE_URL ?>/admin/dashboard');
+            UI.alert('success', data.message, '<?= BASE_URL ?>/');
         } else {
             UI.alert('error', data.message);
         }

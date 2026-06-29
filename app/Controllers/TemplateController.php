@@ -12,9 +12,16 @@ class TemplateController
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             header('Content-Type: application/json');
+
+            if (isset($_POST['email_admin']) && isset($_POST['password_admin'])) {
+                $login = new LoginController();
+                echo json_encode($login->login());
+                exit();
+            }
+
             $install = new InstallController();
             echo json_encode($install->install());
-            exit;
+            exit();
         }
 
         try {
@@ -27,18 +34,18 @@ class TemplateController
 
         if ($admin === false) {
             View::render('Pages/install/install', [
-                'title'         => 'Instalación',
+                'title' => 'Instalación',
                 'useSweetAlert' => true,
-                'useFormsJs'    => true,
-                'useNProgress'  => true,
+                'useFormsJs' => true,
+                'useNProgress' => true,
             ]);
         } else {
             View::render('Pages/login/login', [
-                'title'         => 'Login',
-                'admin'         => $admin,
+                'title' => 'Login',
+                'admin' => $admin,
                 'useSweetAlert' => true,
-                'useFormsJs'    => true,
-                'useNProgress'  => true,
+                'useFormsJs' => true,
+                'useNProgress' => true,
             ]);
         }
     }
